@@ -13,8 +13,8 @@ const Header = () => {
         <a href="/" className="text-gray-700 hover:text-black">Pricing</a>
       </nav>
       <div className="flex space-x-4">
-        <button className="text-gray-700">Log in</button>
-        <button className="bg-black text-white px-4 py-2 rounded">Sign up</button>
+        <a href='/login' className="text-gray-700">Log in</a>
+        <a href='/signup' className="bg-black text-white px-4 py-2 rounded">Sign up</a>
       </div>
     </header>
   );

@@ -11,7 +11,7 @@ const CardImgDG = () => {
           <div className="w-full md:w-1/2 px-6 md:pl-48 md:mt-20">
             <h1 className="text-3xl md:text-5xl font-bold mt-0 mb-2">Looks striking. Feels effortless.</h1>
             <p className="mt-2 mb-4 text-base md:text-lg text-gray-700">Impress your form takers. Catch their eye with striking visuals, and make form-filling feel effortless by replacing walls of questions with just one at a time.</p>
-            <button className="bg-black text-white px-4 py-2 rounded">Sign Up</button>
+            <a href='signup' className="bg-black text-white px-4 py-2 rounded">Sign Up</a>
           </div>
           <div className="w-full md:w-1/2 md:pr-48">
             <img src="/img/videoframe_1.png" alt="videoframe_1" className="w-full h-auto rounded shadow" />
@@ -27,7 +27,7 @@ const CardImgDG = () => {
         <div className="w-full md:w-1/2 px-6 md:pr-48 md:mt-20">
           <h1 className="text-3xl md:text-5xl font-bold mt-0 mb-2">Embeds smoothly. Reveals more.</h1>
           <p className="mt-2 mb-4 text-base md:text-lg text-gray-700">Collect more and better data. Embed forms where people see them, from web to email. Ask the right follow-up question at the right time to reveal deeper insights.</p>
-          <button className="bg-black text-white px-4 py-2 rounded">Sign Up</button>
+          <a href='signup' className="bg-black text-white px-4 py-2 rounded">Sign Up</a>
         </div>
       </div>
     </div>
