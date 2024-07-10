@@ -2,7 +2,7 @@ import React from 'react';
 
 const CardEnPourcentage = () => {
   return (
-    <div className="container mx-auto text-center mt-32 mb-8 px-4">
+    <div className="container mx-auto text-center mt-32 absolute mb-[50%] px-4 bg-white  rounded-br-[100px] rounded-bl-[100px]">
       <div className="mb-2">
         <h1 className="text-5xl font-weight-100">Why Typeform?</h1>
         <p className="text-gray-700 mt-8">Because after switching to us...</p>

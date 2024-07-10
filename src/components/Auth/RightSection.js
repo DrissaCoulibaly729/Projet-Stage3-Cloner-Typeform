@@ -3,10 +3,10 @@ import { FaGlobe } from 'react-icons/fa'; // Assurez-vous d'utiliser l'icône gl
 
 const RightSection = () => {
   return (
-    <div className="flex flex-col justify-between items-center bg-white w-full md:w-1/2 h-screen p-8">
+    <div className="flex flex-col justify-between items-center bg-white w-full md:w-1/2 h-screen ">
       <div className="w-full max-w-md">
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center">
+        <div className="flex justify-between items-center m-0 mb-4 py-2 space-x-15 ">
+          <div className="flex items-center ">
             <FaGlobe className="h-5 w-5 text-gray-500 mr-2" />
             <select className="text-gray-500">
               <option>English</option>
@@ -15,7 +15,7 @@ const RightSection = () => {
           </div>
           <div className="flex items-center ">
             <span className="text-gray-500">Already have an account?</span>
-            <a href="/login" className="ml-4 px-4 py-2 border border-gray-300 rounded text-gray-700">Log in</a>
+            <a href="/login" className="ml-4 px-4  border border-gray-300 rounded text-gray-700">Log in</a>
           </div>
         </div>
         <div className="text-center mt-40">
