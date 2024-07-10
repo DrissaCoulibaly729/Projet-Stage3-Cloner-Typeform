@@ -1,31 +1,62 @@
-// src/components/Dashboard/Workspace.js
-
-// src/components/Workspace.js
-
 import React from 'react';
-import FormCard from './FormCard';
-import FormList from './FormList';
+import { FiPlus, FiSearch, FiList, FiGrid, FiMoreHorizontal, FiUserPlus } from 'react-icons/fi';
 
 const Workspace = () => {
-  const forms = [
-    { title: 'My new form', responses: '0/10', completion: '-', updated: '10 Jul 2024', integrations: '' },
-  ];
-
   return (
-    <div className="p-4 flex-1">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-bold">My workspace</h2>
-        <button className="bg-blue-500 text-white py-2 px-4 rounded">Invite</button>
+    <div className="w-full p-8 bg-gray-50">
+      <div className='flex justify-between '>
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex items-center">
+            <h2 className="text-xl font-bold">My Workspace</h2>
+            <div className="flex-grow"></div>
+          </div>
+          <div className="flex items-center">
+            <button className="mr-2">
+              <FiMoreHorizontal />
+            </button>
+            <span>Invite</span>
+            <button className="ml-2">
+              <FiUserPlus />
+            </button>
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex">
+            <input
+              type="text"
+              placeholder="Search"
+              className="border border-gray-300 rounded-full py-2 px-4"
+            />
+            <div className="flex items-center ml-4">
+              <button className="mr-2">
+                <FiSearch />
+              </button>
+              <button className="mr-2">
+                <FiList />
+              </button>
+              <button className="mr-2">
+                <FiGrid />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="grid grid-cols-3 gap-4 mb-8">
-        <FormCard title="Create a academic performance quiz" description="Assessing subject knowledge." />
-        <FormCard title="Create a opinion poll" description="On current events or social issues." />
-        <FormCard title="Create a demographic survey" description="Gathering age, gender, education level." />
+
+      <div className="flex flex-col items-center">
+        <img
+          src="/path/to/image.png"
+          alt="No forms"
+          className="mb-4"
+          style={{ maxWidth: '100%', height: 'auto' }}  // Ensure the image is responsive
+        />
+        <p>There's not a form in sight</p>
+        <button className="bg-blue-600 text-white py-2 px-4 rounded-full flex items-center mt-2">
+          <FiPlus className="mr-2" /> Create a new form
+        </button>
       </div>
-      <FormList forms={forms} />
     </div>
   );
 };
 
 export default Workspace;
-

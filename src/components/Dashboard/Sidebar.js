@@ -1,24 +1,41 @@
-// src/components/Dashboard/Sidebar.js
-
-
 import React from 'react';
+import { FiPlus, FiSearch, FiGrid } from 'react-icons/fi';
 
 const Sidebar = () => {
   return (
-    <div className="bg-gray-100 w-64 h-screen p-4">
-      <button className="bg-black text-white w-full py-2 rounded mb-4">+ Create a new form</button>
-      <input className="w-full py-2 px-4 rounded mb-4" type="text" placeholder="Search" />
+    <aside className="w-1/5 bg-gray-50 p-4 border-r border-gray-300">
       <div className="mb-4">
-        <h2 className="font-bold mb-2">Workspaces</h2>
-        <div className="bg-white p-4 rounded">Private</div>
+        <button className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg mb-2">
+          <FiPlus className="text-xl mr-2" />
+          Create a new form
+        </button>
       </div>
-      <div>
-        <div className="bg-white p-4 rounded flex justify-between items-center">
-          <span>My workspace</span>
-          <span className="bg-gray-200 py-1 px-2 rounded-full text-xs">1</span>
+
+      <div className="mb-4">
+        <div className="flex items-center">
+          <FiSearch className="text-blue-600 text-xl mr-2" />
+          <span>Search</span>
         </div>
       </div>
-    </div>
+
+      <div className="mb-4">
+        <div className="flex items-center">
+          <FiGrid className="text-blue-600 text-xl mr-2" />
+          <span>Workspace</span>
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <div className="flex items-center">
+          <span className="text-blue-600 text-xl mr-2">^</span>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>My Workspace</span>
+      </div>
+    </aside>
   );
 };
 
