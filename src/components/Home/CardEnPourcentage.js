@@ -4,7 +4,7 @@ const CardEnPourcentage = () => {
   return (
     <div className="container mx-auto text-center mt-32 mb-8 px-4">
       <div className="mb-2">
-        <h1 className="text-5xl font-bold">Why Typeform?</h1>
+        <h1 className="text-5xl font-weight-100">Why Typeform?</h1>
         <p className="text-gray-700 mt-8">Because after switching to us...</p>
       </div>
 

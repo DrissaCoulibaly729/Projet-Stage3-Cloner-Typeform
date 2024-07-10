@@ -6,7 +6,7 @@ const CardImg = () => {
       <div className="mb-12">
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-8 md:space-y-0 md:space-x-20 pr-6">
           <div className="w-full md:w-auto md:pr-20">
-            <h2 className="text-2xl font-bold text-center md:text-left">Works with your existing workflow</h2>
+            <h2 className="text-2xl font-weight-100 text-center md:text-left">Works with your existing workflow</h2>
             <a href="/" className="block text-center md:text-left text-black mt-2">Browse 120+ integrations</a>
           </div>
           <div className="flex flex-wrap justify-center md:flex-no-wrap">

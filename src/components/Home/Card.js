@@ -5,12 +5,12 @@ const Card = () => {
   return (
     <div className="container mx-auto mt-32 mb-8 px-4">
       <div className="flex flex-col items-center mb-8">
-        <h1 className="text-3xl font-bold mb-4 text-center">Do it all with a form</h1>
+        <h1 className="text-3xl font-weight-100 mb-4 text-center">Do it all with a form</h1>
         <p className="text-gray-700 text-center">Whatever your goal, start with a ready-made template.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div className="bg-gray-100 rounded-3xl shadow-lg p-6">
-          <h2 className="text-xl font-bold mb-4 text-center md:text-left">Marketing</h2>
+          <h2 className="text-xl font-weight-100 mb-4 text-center md:text-left">Marketing</h2>
           <div className="flex items-center mb-4">
             <MdArrowForward className="mr-2" />
             <p className="text-gray-700">Signups</p>
@@ -26,7 +26,7 @@ const Card = () => {
         </div>
 
         <div className="bg-gray-100 rounded-3xl shadow-lg p-6">
-          <h2 className="text-xl font-bold mb-4 text-center md:text-left">Product</h2>
+          <h2 className="text-xl font-weight-100 mb-4 text-center md:text-left">Product</h2>
           <div className="flex items-center mb-4">
             <MdArrowForward className="mr-2" />
             <p className="text-gray-700">Beta testing</p>
@@ -42,7 +42,7 @@ const Card = () => {
         </div>
 
         <div className="bg-gray-100 rounded-3xl shadow-lg p-6">
-          <h2 className="text-xl font-bold mb-4 text-center md:text-left">Customer success</h2>
+          <h2 className="text-xl font-weight-100 mb-4 text-center md:text-left">Customer success</h2>
           <div className="flex items-center mb-4">
             <MdArrowForward className="mr-2" />
             <p className="text-gray-700">FAQ builder</p>
@@ -58,7 +58,7 @@ const Card = () => {
         </div>
 
         <div className="bg-gray-100 rounded-3xl shadow-lg p-6">
-          <h2 className="text-xl font-bold mb-4 text-center md:text-left">HR</h2>
+          <h2 className="text-xl font-weight-100 mb-4 text-center md:text-left">HR</h2>
           <div className="flex items-center mb-4">
             <MdArrowForward className="mr-2" />
             <p className="text-gray-700">Job application</p>
@@ -74,7 +74,7 @@ const Card = () => {
         </div>
 
         <div className="bg-gray-100 rounded-3xl shadow-lg p-6">
-          <h2 className="text-xl font-bold mb-4 text-center md:text-left">Creators</h2>
+          <h2 className="text-xl font-weight-100 mb-4 text-center md:text-left">Creators</h2>
           <div className="flex items-center mb-4">
             <MdArrowForward className="mr-2" />
             <p className="text-gray-700">Referral</p>
@@ -90,7 +90,7 @@ const Card = () => {
         </div>
 
         <div className="bg-gray-100 rounded-3xl shadow-lg p-6">
-          <h2 className="text-xl font-bold mb-4 text-center md:text-left">General business</h2>
+          <h2 className="text-xl font-weight-100 mb-4 text-center md:text-left">General business</h2>
           <div className="flex items-center mb-4">
             <MdArrowForward className="mr-2" />
             <p className="text-gray-700">Referral</p>

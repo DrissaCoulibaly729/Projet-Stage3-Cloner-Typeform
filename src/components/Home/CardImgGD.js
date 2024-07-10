@@ -27,23 +27,34 @@ const CardImgGD = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.autoplay = true;
+      videoRef.current.loop = true;
+      videoRef.current.play().catch(error => {
+        console.log("Video play failed:", error);
+      });
+    }
+  }, []);
+
   return (
-    <div className="container mx-auto flex flex-col md:flex-row justify-center items-start pt-6 pr-6">
-      <div className="w-full md:w-9/12 relative">
+    <div className="container mx-auto border-none flex flex-col md:flex-row justify-center items-start pt-6 pr-6">
+      <div className="w-full md:w-1/2 relative">
         <video
           ref={videoRef}
           src="/video/hero.webm"
           alt="Typeform"
-          className="w-full h-auto"
+          className="w-full h-auto border-none"
           autoPlay
           loop
+          muted
         />
       </div>
       <div className="w-full md:w-1/2 mr-4 md:mr-40 pr-6 md:pr-36 mt-8 md:mt-20">
-        <h1 className="text-5xl md:text-7xl font-bold mt-0 mb-4">
+        <h1 className="text-5xl md:text-7xl font-weight-100 mt-0 mb-4">
           Make forms worth filling out
         </h1>
-        <p className="mt-4 mb-6 text-lg md:text-3xl text-gray-700">
+        <p className="mt-4 mb-6 text-l md:text-xl text-gray-700">
           Get more data—like signups, feedback, and anything else—with forms
           designed to be refreshingly different.
         </p>
