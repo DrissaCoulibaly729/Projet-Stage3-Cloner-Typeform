@@ -3,7 +3,7 @@ import { FiPlus, FiSearch, FiGrid } from 'react-icons/fi';
 
 const Sidebar = () => {
   return (
-    <aside className="w-1/5 bg-gray-50 p-4 border-r border-gray-300">
+    <aside className="w-1/5 bg-gray-50 ml-4 p-4 border-r border-gray-300">
       <div className="mb-4">
         <button className="flex items-center bg-black text-white px-4 py-2 rounded-lg mb-2">
           <FiPlus className="text-xl mr-2" />

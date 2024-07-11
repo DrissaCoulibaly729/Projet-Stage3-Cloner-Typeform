@@ -3,7 +3,7 @@ import { FiPlus, FiList, FiGrid, FiMoreHorizontal, FiUserPlus } from 'react-icon
 
 const Workspace = () => {
   return (
-    <div className="w-full  bg-gray-50">
+    <div className="w-full mr-4 bg-gray-50">
       <div className='flex  p-8 justify-between '>
         <div className="flex justify-between space-x-5 items-center mb-6">
           <div className="flex items-center">
