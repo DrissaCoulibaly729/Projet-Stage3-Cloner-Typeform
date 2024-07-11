@@ -7,6 +7,7 @@ import './index.css';
 import LoginPage from './pages/LoginPage';
 import AddContent from './pages/AddContent';
 import Workspace from './pages/Workspace';
+import FormContent from './pages/FormContent';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/form" element={<AddContent/>} />
           <Route path="/workspace" element={<Workspace/>} />
+          <Route path="/formContent" element={<FormContent/>} />
           {/* Ajoutez d'autres routes ici */}
         </Routes>
       </div>

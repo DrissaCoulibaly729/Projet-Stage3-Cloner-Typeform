@@ -15,8 +15,8 @@ const Navbar = () => {
         <span>Results</span>
       </div>
       <div className="flex items-center space-x-4">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">Publish</button>
-        <button className="bg-gray-200 text-black px-4 py-2 rounded">View plans</button>
+        <button className="bg-black text-white px-4 py-2 rounded">Publish</button>
+        <button className="bg-yellow-700 text-black px-4 py-2 rounded">View plans</button>
         <FiHelpCircle className="text-gray-500" />
         <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">DC</div>
       </div>
