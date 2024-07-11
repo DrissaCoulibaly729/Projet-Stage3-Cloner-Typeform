@@ -3,9 +3,9 @@ import { FiChevronDown, FiHelpCircle } from 'react-icons/fi';
 
 const Header = () => {
   return (
-    <header className="flex justify-between items-center pt-2 px-2  border-gray-300 bg-white">
+    <header className="flex justify-between items-center pt-2 px-2  bg-white">
       <div className="flex items-center mb-6">
-        <div className="bg-blue-600 text-white p-2 rounded-full">D</div>
+        <div className="bg-blue-600 text-white p-2 rounded-[100px]">D</div>
         <span className="ml-2">dc377303</span>
         <FiChevronDown className="ml-auto" />
       </div>
