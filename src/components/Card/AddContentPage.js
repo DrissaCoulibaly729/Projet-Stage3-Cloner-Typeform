@@ -11,15 +11,12 @@ const AddContentPage = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center">
-      <div className="max-w-4xl w-full p-6 ">
-        <div className="text-lg font-semibold mb-6 justify-end">My workspace &gt; My new form</div>
-        <h2 className="text-xl text-center mb-8">Select an option to add content</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {options.map((option, index) => (
-            <OptionCard key={index} {...option} />
-          ))}
-        </div>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h2 className="text-xl text-center mb-8">Select an option to add content</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {options.map((option, index) => (
+          <OptionCard key={index} {...option} />
+        ))}
       </div>
     </div>
   );
