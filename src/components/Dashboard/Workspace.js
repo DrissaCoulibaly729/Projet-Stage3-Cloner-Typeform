@@ -43,7 +43,7 @@ const Workspace = () => {
           style={{ maxWidth: '100%', height: 'auto' }}  // Ensure the image is responsive
         />
         <p>There's not a form in sight</p>
-        <button className="bg-blue-600 text-white py-2 px-4 rounded-full flex items-center mt-2">
+        <button className="bg-black text-white py-2 px-4 rounded-full flex items-center mt-2">
           <FiPlus className="mr-2" /> Create a new form
         </button>
       </div>
