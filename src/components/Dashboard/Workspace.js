@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiPlus, FiSearch, FiList, FiGrid, FiMoreHorizontal, FiUserPlus } from 'react-icons/fi';
+import { FiPlus, FiList, FiGrid, FiMoreHorizontal, FiUserPlus } from 'react-icons/fi';
 
 const Workspace = () => {
   return (
@@ -23,15 +23,7 @@ const Workspace = () => {
 
         <div className="flex justify-between items-center mb-6">
           <div className="flex">
-            <input
-              type="text"
-              placeholder="Search"
-              className="border border-gray-300 rounded-full py-2 px-4"
-            />
             <div className="flex items-center ml-4">
-              <button className="mr-2">
-                <FiSearch />
-              </button>
               <button className="mr-2">
                 <FiList />
               </button>
