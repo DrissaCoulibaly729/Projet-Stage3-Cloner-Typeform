@@ -52,26 +52,24 @@ const SidebarD = () => {
           <div className="flex flex-col">
             <div className="text-gray-900">Question</div>
             <div className="flex space-x-2">
-              <button
+              <input
                 type="button"
                 role="radio"
                 aria-checked="true"
                 className="flex items-center p-2 focus:outline-none"
                 tabIndex="-1"
-              >
+              />
                 <AiOutlineCheckSquare size={16} />
                 Text
-              </button>
-              <button
+              <input
                 type="button"
                 role="radio"
                 aria-checked="false"
                 className="flex items-center p-2 focus:outline-none"
                 tabIndex="-1"
-              >
+              />
                 <AiOutlineCheckSquare size={16} />
                 Video
-              </button>
             </div>
           </div>
           <div className="flex flex-col">
