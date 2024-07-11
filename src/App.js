@@ -5,6 +5,8 @@ import SignUpPage from './pages/SignUpPage';
 import Dashboard from './pages/Dashboard';
 import './index.css';
 import LoginPage from './pages/LoginPage';
+import AddContent from './pages/AddContent';
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/form" element={<AddContent/>} />
           {/* Ajoutez d'autres routes ici */}
         </Routes>
       </div>
