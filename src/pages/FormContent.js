@@ -46,7 +46,7 @@ const categories = [
     items: [
       { label: 'Long Text', bgColor: 'bg-blue-100' },
       { label: 'Short Text', bgColor: 'bg-blue-100' },
-      { label: 'Video', bgColor: 'bg-orange-100' },
+      { label: 'Video', bgColor: 'bg-orange-100', isPremium: true },
     ],
   },
   {
@@ -54,9 +54,9 @@ const categories = [
     items: [
       { label: 'Number', bgColor: 'bg-yellow-100' },
       { label: 'Date', bgColor: 'bg-yellow-100' },
-      { label: 'Payment', bgColor: 'bg-yellow-100' },
-      { label: 'File Upload', bgColor: 'bg-yellow-100' },
-      { label: 'Google Drive', bgColor: 'bg-yellow-100' },
+      { label: 'Payment', bgColor: 'bg-yellow-100', isPremium: true },
+      { label: 'File Upload', bgColor: 'bg-yellow-100', isPremium: true },
+      { label: 'Google Drive', bgColor: 'bg-yellow-100', isPremium: true },
       { label: 'Calendly', bgColor: 'bg-yellow-100' },
     ],
   },
@@ -68,7 +68,7 @@ const categories = [
       { label: 'Question Group', bgColor: 'bg-gray-100' },
       { label: 'Multi Question Page', bgColor: 'bg-gray-100' },
       { label: 'End Screen', bgColor: 'bg-gray-100' },
-      { label: 'Redirect to URL', bgColor: 'bg-gray-100' },
+      { label: 'Redirect to URL', bgColor: 'bg-gray-100', isPremium: true },
     ],
   },
 ];
@@ -94,9 +94,9 @@ const FormContent = () => {
         <div className="p-4 bg-white m-2 mb-0 mr-0 rounded-l-3xl rounded-br-3xl">
           <div className="grid grid-cols-4 gap-4">
             <div>
-              <div className="flex border p-1 rounded-lg w-full items-center mb-4">
-                <img src="/svg/search.svg" alt="Search" className="h-6 w-6 mr-2" />
-                <input type="text" placeholder="Search" className="border-none focus:outline-none w-full" />
+              <div className="flex bg-gray-100 border p-1 rounded-lg w-full items-center mb-4">
+                <img src="/svg/search.svg" alt="Search" className="h-4 w-4 ml-2 " />
+                <input type="text" placeholder="Find a content type" className=" ml-2 bg-gray-100 border-none  focus:outline-none w-full" />
               </div>
               <div>
                 <h3 className="mb-2 text-sm font-medium text-gray-600">Recommended</h3>
@@ -132,6 +132,7 @@ const FormContent = () => {
                       <img src={getImageSrc(item.label)} className="h-2 w-2 md:h-4 md:w-4" alt={item.label} />
                     </div>
                     <span className="ml-2 text-xs md:text-sm">{item.label}</span>
+                    {item.isPremium && <img src="/svg/premium.svg" className="ml-auto h-4 w-4 bg-yellow-200" alt="Premium" />}
                   </div>
                 ))}
               </div>
@@ -156,6 +157,7 @@ const FormContent = () => {
                       <img src={getImageSrc(item.label)} className="h-2 w-2 md:h-4 md:w-4" alt={item.label} />
                     </div>
                     <span className="ml-2 text-xs md:text-sm">{item.label}</span>
+                    {item.isPremium && <img src="/svg/premium.svg" className="ml-auto h-4 w-4 bg-yellow-200" alt="Premium" />}
                   </div>
                 ))}
               </div>
@@ -181,6 +183,7 @@ const FormContent = () => {
                           <img src={getImageSrc(item.label)} className="h-2 w-2 md:h-4 md:w-4" alt={item.label} />
                         </div>
                         <span className="ml-2 text-xs md:text-sm">{item.label}</span>
+                        {item.isPremium && <img src="/svg/premium.svg" className="ml-auto h-4 w-4 bg-yellow-200" alt="Premium" />}
                       </div>
                     ))}
                   </div>
