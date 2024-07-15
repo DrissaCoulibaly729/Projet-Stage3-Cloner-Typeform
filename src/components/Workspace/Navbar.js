@@ -3,7 +3,7 @@ import { FiGrid, FiHelpCircle } from 'react-icons/fi';
 
 const Navbar = () => {
   return (
-    <div className="bg-white p-4 flex justify-between items-center border-b">
+    <div className="bg-white p-4 flex justify-between items-center">
       <div className="flex items-center space-x-2">
         <FiGrid className="text-gray-500" />
         <h1 className="text-xl font-semibold">My workspace &gt; My new form</h1>

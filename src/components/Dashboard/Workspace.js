@@ -1,39 +1,40 @@
 import React from 'react';
-import { FiPlus, FiList, FiGrid, FiMoreHorizontal, FiUserPlus } from 'react-icons/fi';
+import { FiPlus, FiUsers } from 'react-icons/fi';
+import { MdDateRange } from 'react-icons/md';
+import { FaListUl } from 'react-icons/fa';
+import { FaThLarge } from 'react-icons/fa';
 
 const Workspace = () => {
   return (
     <div className="w-full sm:w-3/4 lg:w-4/5  xl:w-full mr-4 bg-gray-50">
-      <div className='flex p-8 justify-between'>
-        <div className="flex justify-between space-x-5 items-center mb-6 w-full">
-          <div className="flex items-center">
-            <h2 className="text-xl font-bold">My Workspace</h2>
-            <div className="flex-grow"></div>
-          </div>
-          <div className="flex items-center">
-            <button className="mr-2">
-              <FiMoreHorizontal />
-            </button>
-            <button className="mr-2">
-              <FiUserPlus />
-            </button>
-            <span>Invite</span>
-          </div>
-        </div>
-
-        <div className="flex justify-between items-center mb-6 w-full">
-          <div className="flex">
-            <div className="flex items-center ml-4">
-              <button className="mr-2">
-                <FiList />
-              </button>
-              <button className="mr-2">
-                <FiGrid />
-              </button>
+      <div className="flex items-center justify-between p-16 bg-gray-50">
+            <div className="flex items-center space-x-5">
+                <h1 className="text-xl font-semibold">Test</h1>
+                <button className="flex items-center space-x-1 text-gray-600">
+                    <FiUsers className="w-5 h-5" />
+                    <span>Invite</span>
+                </button>
+                <button className="flex items-center space-x-1 text-gray-600">
+                    <img src='/svg/premium.svg' alt='premium' />
+                </button>
             </div>
-          </div>
+            <div className="flex items-center space-x-2">
+                <button className="flex items-center space-x-1 border rounded px-2 py-1 text-gray-600">
+                    <MdDateRange className="w-5 h-5" />
+                    <span>Date created</span>
+                </button>
+                <div className=" inline-block  flex ">
+                    <button className=" bg-transparent px-2 bg-stone-200  flex items-center space-x-1 text-gray-600 rounded-l-md">
+                        <FaListUl className="w-5 h-5" />
+                        <span>List</span>
+                    </button>
+                    <button className="bg-transparent px-2 bg-white  flex items-center space-x-1 text-gray-600 rounded-r-md">
+                        <FaThLarge className="w-5 h-5" />
+                        <span>Grid</span>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
 
       <div className="flex flex-col pt-10 items-center">
         <img

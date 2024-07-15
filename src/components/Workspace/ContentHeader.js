@@ -1,27 +1,36 @@
 import React from 'react';
-import { AiOutlinePlus, AiOutlinePhone, AiOutlineEye, AiOutlineCheckSquare, AiOutlineHistory, AiOutlineSetting } from 'react-icons/ai';
-
+import { FiPlus, FiSmartphone, FiPlay, FiSettings } from 'react-icons/fi';
+import { MdRefresh } from 'react-icons/md';
+import { CgOptions } from 'react-icons/cg';
+import { BsCircle } from 'react-icons/bs';
 const ContentHeader = () => {
   return (
-    <div className="bg-stone-100 p-4 mx-4 border-b rounded-lg flex items-center">
-      <div className="">
-        <button className="flex items-center gap-2 focus:outline-none border border-gray-300 rounded-lg px-4 py-2">
-          <AiOutlinePlus className="text-xl" />
-          <span>Add Content</span>
-        </button>
-      </div>
-      <div className="ml-10 flex items-center gap-2">
-        <AiOutlinePhone className="text-xl" />
-        <span className="text-lg">|</span>
-        <AiOutlineEye className="text-xl" />
-        <span className="text-lg">|</span>
-        <AiOutlineCheckSquare className="text-xl" />
-        <span className="text-lg">|</span>
-        <AiOutlineSetting className="text-xl" />
-        <span className="text-lg">|</span>
-        <AiOutlineHistory className="text-xl" />
-      </div>
-    </div>
+    <div className="flex mx-5 items-center space-x-4 p-2 rounded-lg bg-stone-100">
+            <button className="flex items-center space-x-2 border rounded-full px-4 py-2 text-gray-600">
+                <FiPlus className="w-5 h-5" />
+                <span>Add content</span>
+            </button>
+            <div className="flex items-center space-x-4">
+                <button className="text-gray-600">
+                    <FiSmartphone className="w-5 h-5" />
+                </button>
+                <button className="text-gray-600">
+                    <FiPlay className="w-5 h-5" />
+                </button>
+                <button className="text-gray-600">
+                    <BsCircle className="w-5 h-5" />
+                </button>
+                <button className="text-gray-600">
+                    <MdRefresh className="w-5 h-5" />
+                </button>
+                <button className="text-gray-600">
+                    <CgOptions className="w-5 h-5" />
+                </button>
+                <button className="text-gray-600">
+                    <FiSettings className="w-5 h-5" />
+                </button>
+            </div>
+        </div>
   );
 };
 
