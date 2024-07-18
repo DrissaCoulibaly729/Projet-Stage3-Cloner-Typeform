@@ -1,7 +1,16 @@
 import React from 'react';
 import { FaGlobe } from 'react-icons/fa'; // Assurez-vous d'utiliser l'icône globe de react-icons
+import { googleAuth } from '../../Services/axios.services'; // Importez le service d'authentification Google
 
 const RightSection = () => {
+  const handleGoogleSignUp = async () => {
+    try {
+      await googleAuth();
+    } catch (error) {
+      console.error('Error during Google sign up:', error);
+    }
+  };
+
   return (
     <div className="flex flex-col justify-between items-center bg-white w-full md:w-1/2 h-screen ">
       <div className="w-full max-w-md">
@@ -23,7 +32,10 @@ const RightSection = () => {
           <p className="text-lg md:text-xl text-gray-700 mb-8">
             Get better data with conversational forms, surveys, quizzes & more.
           </p>
-          <button className="w-full bg-white border border-gray-300 text-gray-700 py-2 rounded mb-4 flex justify-center items-center">
+          <button 
+            onClick={handleGoogleSignUp} // Ajoutez cet onClick handler
+            className="w-full bg-white border border-gray-300 text-gray-700 py-2 rounded mb-4 flex justify-center items-center"
+          >
             <img src="/svg/icons8-google.svg" alt="Google" className="mr-2" /> Sign up with Google
           </button>
           <button className="w-full bg-white border border-gray-300 text-gray-700 py-2 rounded mb-4 flex justify-center items-center">
