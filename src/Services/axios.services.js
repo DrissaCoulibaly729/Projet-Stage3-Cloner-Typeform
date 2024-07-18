@@ -258,12 +258,25 @@ export const deleteUser = async (id) => {
   }
 };
 
+// Service pour l'authentification Google
 export const googleAuth = async () => {
     try {
+        // Notez que l'URL complète est utilisée ici
         const response = await axiosInstance.get('/google/login');
         window.location.href = response.request.responseURL;
     } catch (error) {
         console.error('Error during Google authentication:', error);
+        throw error;
+    }
+};
+
+// Ajouter des services pour le callback si nécessaire
+export const googleCallback = async (data) => {
+    try {
+        const response = await axiosInstance.post('/google/callback', data);
+        return response.data;
+    } catch (error) {
+        console.error('Error during Google callback:', error);
         throw error;
     }
 };
