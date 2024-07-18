@@ -1,7 +1,7 @@
 // services/axios.services.js
 
 // Import de l'instance d'axios
-import axiosInstance from './axiosInstance';
+import { axiosInstance, axiosGoogleInstance } from './axiosInstance';
 
 // Services pour les Workspaces
 export const getAllWorkspaces = async () => {
@@ -261,8 +261,7 @@ export const deleteUser = async (id) => {
 // Service pour l'authentification Google
 export const googleAuth = async () => {
     try {
-        // Notez que l'URL complète est utilisée ici
-        const response = await axiosInstance.get('/google/login');
+        const response = await axiosGoogleInstance.get('/google/login');
         window.location.href = response.request.responseURL;
     } catch (error) {
         console.error('Error during Google authentication:', error);
@@ -273,7 +272,7 @@ export const googleAuth = async () => {
 // Ajouter des services pour le callback si nécessaire
 export const googleCallback = async (data) => {
     try {
-        const response = await axiosInstance.post('/google/callback', data);
+        const response = await axiosGoogleInstance.post('/google/callback', data);
         return response.data;
     } catch (error) {
         console.error('Error during Google callback:', error);

@@ -8,4 +8,12 @@ const axiosInstance = axios.create({
     },
 });
 
-export default axiosInstance;
+const axiosGoogleInstance = axios.create({
+    baseURL: 'http://localhost:8000', // Base URL pour les API Google sans le préfixe /v1
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    },
+});
+
+export { axiosInstance, axiosGoogleInstance };
