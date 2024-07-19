@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 });
 
 const axiosGoogleInstance = axios.create({
-    baseURL: 'http://localhost:8000', // Base URL pour les API Google sans le préfixe /v1
+    baseURL: 'http://localhost:8000/api', // Base URL pour les API Google sans le préfixe /v1
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
