@@ -6,7 +6,6 @@ const axiosInstance = axios.create({
         'Content-Type': 'application/json',
         'Accept': 'application/json',
     },
-    withCredentials: true, // Ajoutez ceci pour inclure les informations d'identification
 });
 
 const axiosGoogleInstance = axios.create({
@@ -15,7 +14,6 @@ const axiosGoogleInstance = axios.create({
         'Content-Type': 'application/json',
         'Accept': 'application/json',
     },
-    withCredentials: true, // Ajoutez ceci pour inclure les informations d'identification
 });
 
 const axiosPlayInstance = axios.create({
