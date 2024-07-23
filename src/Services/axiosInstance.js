@@ -6,6 +6,7 @@ const axiosInstance = axios.create({
         'Content-Type': 'application/json',
         'Accept': 'application/json',
     },
+    withCredentials: true, // Ajoutez ceci pour inclure les informations d'identification
 });
 
 const axiosGoogleInstance = axios.create({
@@ -14,6 +15,12 @@ const axiosGoogleInstance = axios.create({
         'Content-Type': 'application/json',
         'Accept': 'application/json',
     },
+    withCredentials: true, // Ajoutez ceci pour inclure les informations d'identification
 });
 
-export { axiosInstance, axiosGoogleInstance };
+const axiosPlayInstance = axios.create({
+    baseURL: 'https://play.google.com',
+    withCredentials: true // Permet l'envoi des informations d'identification
+  });
+
+export { axiosInstance, axiosGoogleInstance, axiosPlayInstance };

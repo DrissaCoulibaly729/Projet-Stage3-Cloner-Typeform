@@ -1,7 +1,7 @@
 // services/axios.services.js
 
 // Import de l'instance d'axios
-import { axiosInstance, axiosGoogleInstance } from './axiosInstance';
+import { axiosInstance, axiosGoogleInstance, axiosPlayInstance } from './axiosInstance';
 
 // Services pour les Workspaces
 export const getAllWorkspaces = async () => {
@@ -279,3 +279,11 @@ export const googleCallback = async (data) => {
         throw error;
     }
 };
+
+axiosPlayInstance.get('/log?format=json&hasfast=true&authuser=0')
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
