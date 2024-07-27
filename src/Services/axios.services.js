@@ -17,7 +17,12 @@ export const getAllWorkspaces = async () => {
 export const createWorkspace = async (workspaceData) => {
   try {
     const response = await axiosInstance.post('/workspaces', workspaceData);
-    return response.data;
+    const rawData = response.data;
+      const jsonStartIndex = rawData.indexOf('{');
+      const jsonDataString = rawData.slice(jsonStartIndex);
+      const workspacesData = JSON.parse(jsonDataString);
+  
+      return workspacesData;
   } catch (error) {
     console.error('Error creating workspace:', error);
     throw error;
@@ -74,6 +79,24 @@ export const createForm = async (formData) => {
     throw error;
   }
 };
+
+export const getWorkspacesByUserId = async (userId) => {
+    try {
+      // Envoie une requête GET pour récupérer les workspaces
+      const response = await axiosInstance.get(`/workspaces/${userId}`);
+      const rawData = response.data;
+      const jsonStartIndex = rawData.indexOf('{');
+      const jsonDataString = rawData.slice(jsonStartIndex);
+      const workspaceData = JSON.parse(jsonDataString);
+  
+      return workspaceData;
+      // Retourne les données JSON
+    } catch (error) {
+      // Gère les erreurs
+      console.error('Error fetching workspaces:', error);
+      throw error; // Rejette l'erreur pour que l'appelant puisse la gérer
+    }
+  };
 
 export const getFormById = async (id) => {
   try {
