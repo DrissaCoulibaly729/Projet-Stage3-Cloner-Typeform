@@ -3,8 +3,13 @@ import { FiPlus, FiUsers } from 'react-icons/fi';
 import { MdDateRange } from 'react-icons/md';
 import { FaListUl } from 'react-icons/fa';
 import { FaThLarge } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Workspace = () => {
+  const navigate = useNavigate(); 
+  const redirectToFormList = () => {
+    navigate('/form');
+  }
   return (
     <div className="w-full sm:w-3/4 lg:w-4/5  xl:w-full mr-4 bg-gray-50">
       <div className="flex items-center justify-between p-16 bg-gray-50">
@@ -44,7 +49,7 @@ const Workspace = () => {
           style={{ maxWidth: '100%', height: 'auto' }}  
         />
         <p>There's not a form in sight</p>
-        <button className="bg-black text-white py-2 px-4 rounded-lg flex items-center mt-2">
+        <button onClick={redirectToFormList} className="bg-black text-white py-2 px-4 rounded-lg flex items-center mt-2">
           <FiPlus className="mr-2" /> Create a new form
         </button>
       </div>

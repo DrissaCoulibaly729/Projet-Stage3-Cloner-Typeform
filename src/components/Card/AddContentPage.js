@@ -1,13 +1,41 @@
+// AddContentPage.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AiOutlinePlus, AiOutlineImport, AiOutlineRobot, AiOutlineCheckSquare } from 'react-icons/ai';
 import OptionCard from './OptionCard'; // Assurez-vous que le chemin est correct
 
 const AddContentPage = () => {
+  const navigate = useNavigate();
+
   const options = [
-    { Icon: AiOutlinePlus, title: 'Start from scratch', text: 'Build from a list of available content types', bgColor: 'bg-blue-100' },
-    { Icon: AiOutlineImport, title: 'Import questions', text: 'Copy and paste questions or import from Google Forms', bgColor: 'bg-yellow-100' },
-    { Icon: AiOutlineRobot, title: 'Create with AI', text: 'Generate custom questions with AI and get inspired', bgColor: 'bg-purple-100' },
-    { Icon: AiOutlineCheckSquare, title: 'Qualify leads', text: 'Score and qualify leads with our AI solution', bgColor: 'bg-green-100' },
+    {
+      Icon: AiOutlinePlus,
+      title: 'Start from scratch',
+      text: 'Build from a list of available content types',
+      bgColor: 'bg-blue-100',
+      onClick: () => navigate('/formContent')
+    },
+    {
+      Icon: AiOutlineImport,
+      title: 'Import questions',
+      text: 'Copy and paste questions or import from Google Forms',
+      bgColor: 'bg-yellow-100',
+      onClick: () => console.log('Import questions clicked')
+    },
+    {
+      Icon: AiOutlineRobot,
+      title: 'Create with AI',
+      text: 'Generate custom questions with AI and get inspired',
+      bgColor: 'bg-purple-100',
+      onClick: () => console.log('Create with AI clicked')
+    },
+    {
+      Icon: AiOutlineCheckSquare,
+      title: 'Qualify leads',
+      text: 'Score and qualify leads with our AI solution',
+      bgColor: 'bg-green-100',
+      onClick: () => console.log('Qualify leads clicked')
+    }
   ];
 
   return (

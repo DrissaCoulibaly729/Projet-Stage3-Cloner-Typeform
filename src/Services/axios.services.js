@@ -258,6 +258,27 @@ export const deleteUser = async (id) => {
   }
 };
 
+export const getUser = async (token) => {
+    try {
+      const response = await axiosInstance.get('http://localhost:8000/api/v1/user', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log('Response from getUser:', response);
+  
+      // Extraire la chaîne de données et parser le JSON
+      const rawData = response.data;
+      const jsonStartIndex = rawData.indexOf('{');
+      const jsonDataString = rawData.slice(jsonStartIndex);
+      const userData = JSON.parse(jsonDataString);
+  
+      return userData;
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      throw error;
+    }
+  };
 export const loginUser = async (email, password) => {
   try {
     const response = await axiosInstance.post('/login', { email, password });
