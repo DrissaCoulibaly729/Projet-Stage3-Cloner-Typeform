@@ -1,7 +1,7 @@
 // services/axios.services.js
 
 // Import de l'instance d'axios
-import { axiosInstance, axiosGoogleInstance, axiosPlayInstance } from './axiosInstance';
+import { axiosInstance, axiosGoogleInstance } from './axiosInstance';
 
 // Services pour les Workspaces
 export const getAllWorkspaces = async () => {
@@ -258,6 +258,31 @@ export const deleteUser = async (id) => {
   }
 };
 
+export const loginUser = async (email, password) => {
+  try {
+    const response = await axiosInstance.post('/login', { email, password });
+    return response;
+  } catch (error) {
+    console.error('Error logging in:', error);
+    throw error;
+  }
+};
+
+export const getProtectedData = async () => {
+  const token = localStorage.getItem('auth_token');
+  try {
+    const response = await axiosInstance.get('/protected-route', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    console.log('Protected data:', response.data);
+    return response.data; // Retourner les données si nécessaire
+  } catch (error) {
+    console.error('Error fetching protected data:', error);
+    throw error; // Propager l'erreur pour la gestion ultérieure
+  }
+};
 // Service pour l'authentification Google
 export const googleAuth = async () => {
     try {
@@ -280,10 +305,14 @@ export const googleCallback = async (data) => {
     }
 };
 
-axiosPlayInstance.get('/log?format=json&hasfast=true&authuser=0')
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+export const sendAuthCode = async (code) => {
+  try {
+      const response = await axiosGoogleInstance.post('/google/google-auth', { code });
+      return response.data; // Retourne les données de réponse, y compris le token
+  } catch (error) {
+      console.error('Error sending authorization code:', error);
+      throw error;
+  }
+};
+
+
