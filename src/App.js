@@ -10,6 +10,7 @@ import AddContent from './pages/AddContent';
 import Workspace from './pages/Workspace';
 import FormContent from './pages/FormContent';
 import AuthCallback from './pages/AuthCallback';
+import Preview from './pages/Preview';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/workspace" element={<Workspace/>} />
           <Route path="/formContent" element={<FormContent/>} />
           <Route path="/auth/callback" element={<AuthCallback/>} />
+          <Route path="/preview" element={<Preview/>} />
           {/* Ajoutez d'autres routes ici */}
         </Routes>
       </div>

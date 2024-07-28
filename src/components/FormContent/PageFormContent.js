@@ -1,7 +1,8 @@
 import React from 'react';
 import { createForm, createWorkspace, getWorkspacesByUserId } from '../../Services/axios.services';
 import { fetchUserData } from '../../Utils/user.utils';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { extractIdFromUrl } from '../../Utils/id.utils';
 
 const categories = [
   {
@@ -30,7 +31,7 @@ const categories = [
       { label: 'Multiple Choice', bgColor: 'bg-purple-100' },
       { label: 'Dropdown', bgColor: 'bg-purple-100' },
       { label: 'Picture Choice', bgColor: 'bg-purple-100' },
-      { label: 'yes_no', bgColor: 'bg-purple-100' },
+      { label: 'Yes/No', bgColor: 'bg-purple-100' },
       { label: 'Legal', bgColor: 'bg-purple-100' },
     ],
   },
@@ -77,67 +78,77 @@ const categories = [
 ];
 
 const PageFormContent = () => {
-    const navigate = useNavigate(); // Correction ici
+  const location = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(location.search);
+  const id = extractIdFromUrl(searchParams);
 
-    const generateUniqueWorkspaceName = async (userId, baseName) => {
-        try {
-            const response = await getWorkspacesByUserId(userId);
-            
-            console.log('verif : ', response);
-            const workspaces = Array.isArray(response) ? response : [response];
-            
-            if (!Array.isArray(workspaces)) {
-                console.error('Expected an array of workspaces, but got:', workspaces);
-                throw new Error('Invalid data received from getWorkspacesByUserId');
-            }
-            
-            let newName = baseName;
-            let counter = 1;
-            
-            while (workspaces.some(ws => ws.name === newName)) {
-                newName = `${baseName} ${counter}`;
-                counter++;
-            }
-            
-            return newName;
-        } catch (error) {
-            console.error('Error generating unique workspace name:', error);
-            throw error;
-        }
-    };
+  const generateUniqueWorkspaceName = async (userId, baseName) => {
+    try {
+      const response = await getWorkspacesByUserId(userId);
+      console.log('Existing workspaces response:', response);
+      const workspaces = Array.isArray(response) ? response : [response];
 
-    const handleClick = async (itemLabel) => {
-        try {
-            const userDataArray = await fetchUserData();
-            const userId = userDataArray.find(item => item.key === 'ID')?.value || '';
-    
-            const baseName = 'Workspace';
-            const uniqueName = await generateUniqueWorkspaceName(userId, baseName);
-    
-            console.log(userId);
-            console.log(uniqueName);
-            
-            const workspaceData = {
-                user_id: userId,
-                name: uniqueName,
-            };
-            const workspace = await createWorkspace(workspaceData);
-            console.log('Donnee : ', workspace);
-            const workspaceId = workspace.id; // Récupérez l'ID de l'espace de travail à partir de la réponse
-            console.log('id : ', workspaceId);
-            
-            const formData = {
-                workspace_id: workspaceId,
-                title: itemLabel,
-            };
-            const Form = await createForm(formData);
-            console.log(Form);
-            console.log('Form created successfully');
-            navigate('/workspace');
-        } catch (error) {
-            console.error('Error creating workspace or form:', error);
-        }
-    };
+      if (response && response[0] && response[0].exception) {
+        console.error('Error response from getWorkspacesByUserId:', response);
+        throw new Error(response[0].message);
+      }
+
+      console.log('Existing workspaces:', workspaces); // Log the existing workspaces
+
+      let newName = baseName;
+      let counter = 1;
+
+      while (workspaces.some(ws => ws.name === newName)) {
+        console.log(`Name conflict: ${newName} exists. Trying another name...`);
+        newName = `${baseName} ${counter}`;
+        counter++;
+      }
+
+      console.log(`Generated unique name: ${newName}`);
+      return newName;
+    } catch (error) {
+      console.error('Error generating unique workspace name:', error);
+      throw error;
+    }
+  };
+
+  const handleClick = async (itemLabel) => {
+    try {
+      const userDataArray = await fetchUserData();
+      const userId = userDataArray.find(item => item.key === 'ID')?.value || '';
+
+      let workspaceId = id;
+
+      // If ID does not exist, create a new workspace
+      if (!workspaceId) {
+        const baseName = 'Workspace';
+        const uniqueName = await generateUniqueWorkspaceName(userId, baseName);
+
+        const workspaceData = {
+          user_id: userId,
+          name: uniqueName,
+        };
+        const workspace = await createWorkspace(workspaceData);
+        workspaceId = workspace.id;
+      }
+
+      const formData = {
+        workspace_id: workspaceId,
+        title: itemLabel,
+      };
+      const form = await createForm(formData);
+
+      // Generate a random combination of numbers
+      const randomCombination = Math.floor(Math.random() * 1000000);
+
+      // Navigate to the workspace with workspace ID and random combination
+      navigate(`/workspace?${workspaceId}-${randomCombination}`);
+    } catch (error) {
+      console.error('Error creating workspace or form:', error);
+    }
+  };
+
   const getImageSrc = (label) => `/svg/${label.toLowerCase().replace(/ /g, '_')}.svg`;
 
   return (
@@ -212,9 +223,9 @@ const PageFormContent = () => {
                   </div>
                 ))}
               </div>
-              <h3 className="mb-2 text-sm font-medium text-gray-600">Rating & Ranking</h3>
+              <h3 className="mb-2 text-sm font-medium text-gray-600">Other</h3>
               <div className="grid grid-cols-1 gap-2">
-                {categories[3].items.map((item, index) => (
+                {categories[5].items.map((item, index) => (
                   <div key={index} onClick={() => handleClick(item.label)} className="flex cursor-pointer items-center p-1 rounded-lg">
                     <div className={`flex items-center justify-center p-2 rounded-lg ${item.bgColor}`}>
                       <img src={getImageSrc(item.label)} className="h-2 w-2 md:h-4 md:w-4" alt={item.label} />
@@ -225,9 +236,9 @@ const PageFormContent = () => {
               </div>
             </div>
             <div>
-              <h3 className="mb-2 text-sm font-medium text-gray-600">Other</h3>
+              <h3 className="mb-2 text-sm font-medium text-gray-600">Rating & Ranking</h3>
               <div className="grid grid-cols-1 gap-2 mb-4">
-                {categories[4].items.map((item, index) => (
+                {categories[3].items.map((item, index) => (
                   <div key={index} onClick={() => handleClick(item.label)} className="flex cursor-pointer items-center p-1 rounded-lg">
                     <div className={`flex items-center justify-center p-2 rounded-lg ${item.bgColor}`}>
                       <img src={getImageSrc(item.label)} className="h-2 w-2 md:h-4 md:w-4" alt={item.label} />
@@ -239,7 +250,7 @@ const PageFormContent = () => {
               </div>
               <h3 className="mb-2 text-sm font-medium text-gray-600">Welcome Screen</h3>
               <div className="grid grid-cols-1 gap-2">
-                {categories[5].items.map((item, index) => (
+                {categories[6].items.map((item, index) => (
                   <div key={index} onClick={() => handleClick(item.label)} className="flex cursor-pointer items-center p-1 rounded-lg">
                     <div className={`flex items-center justify-center p-2 rounded-lg ${item.bgColor}`}>
                       <img src={getImageSrc(item.label)} className="h-2 w-2 md:h-4 md:w-4" alt={item.label} />

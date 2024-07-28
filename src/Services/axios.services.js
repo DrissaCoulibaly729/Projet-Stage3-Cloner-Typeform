@@ -7,7 +7,23 @@ import { axiosInstance, axiosGoogleInstance } from './axiosInstance';
 export const getAllWorkspaces = async () => {
   try {
     const response = await axiosInstance.get('/workspaces');
-    return response.data;
+    const rawData = response.data;
+  
+      console.log('Raw data:', rawData); // Affichez les données brutes pour débogage
+  
+      // Trouvez le début de la chaîne JSON après les en-têtes HTTP
+      const jsonStartIndex = rawData.indexOf('[{');
+      if (jsonStartIndex === -1) {
+        throw new Error('Invalid response format');
+      }
+  
+      // Extrayez la chaîne JSON
+      const jsonDataString = rawData.slice(jsonStartIndex);
+  
+      // Parsez la chaîne JSON
+      const workspaceData = JSON.parse(jsonDataString);
+  
+      return workspaceData;
   } catch (error) {
     console.error('Error fetching workspaces:', error);
     throw error;
@@ -83,18 +99,49 @@ export const createForm = async (formData) => {
 export const getWorkspacesByUserId = async (userId) => {
     try {
       // Envoie une requête GET pour récupérer les workspaces
-      const response = await axiosInstance.get(`/workspaces/${userId}`);
+      const response = await axiosInstance.get(`/workspaces/${userId}/users`);
       const rawData = response.data;
-      const jsonStartIndex = rawData.indexOf('{');
+
+    // Vérifiez si rawData est une chaîne de caractères et contient les données JSON attendues
+    if (typeof rawData === 'string') {
+      const jsonStartIndex = rawData.indexOf('[');
       const jsonDataString = rawData.slice(jsonStartIndex);
       const workspaceData = JSON.parse(jsonDataString);
-  
       return workspaceData;
+    }
+
+    return rawData;
       // Retourne les données JSON
     } catch (error) {
       // Gère les erreurs
       console.error('Error fetching workspaces:', error);
       throw error; // Rejette l'erreur pour que l'appelant puisse la gérer
+    }
+  };
+
+  export const getFormsByWorkspaceId = async (workspaceId) => {
+    try {
+      const response = await axiosInstance.get(`/workspace/${workspaceId}/forms`);
+      const rawData = response.data;
+  
+      console.log('Raw data:', rawData); // Affichez les données brutes pour débogage
+  
+      // Trouvez le début de la chaîne JSON après les en-têtes HTTP
+      const jsonStartIndex = rawData.indexOf('[{');
+      if (jsonStartIndex === -1) {
+        throw new Error('Invalid response format');
+      }
+  
+      // Extrayez la chaîne JSON
+      const jsonDataString = rawData.slice(jsonStartIndex);
+  
+      // Parsez la chaîne JSON
+      const workspaceData = JSON.parse(jsonDataString);
+  
+      return workspaceData;
+    } catch (error) {
+      console.error('Error fetching forms:', error);
+      throw error;
     }
   };
 
